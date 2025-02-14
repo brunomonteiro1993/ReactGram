@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 // redux
-// import { getUserDetails } from '../../slices/userSlice'
+import { getUserDetails } from '../../slices/userSlice'
 
 const Profile = () => {
     const {id} = useParams()
@@ -26,16 +26,16 @@ const Profile = () => {
     // photo
 
     // Load user data
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     dispatch(getUserDetails(id))
-    // }, [dispatch, id])
+        dispatch(getUserDetails(id))
+    }, [dispatch, id])
 
-    // console.log(user)
+    console.log(user)
 
-    // if(loading) {
-    //     return <p>Carregando...</p>
-    // }
+    if(loading) {
+        return <p>Carregando...</p>
+    }
 
   return (
     <div id='profile'>
