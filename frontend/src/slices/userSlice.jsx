@@ -39,18 +39,18 @@ export const updateProfile = createAsyncThunk(
 );
 
 // Get user details
-// export const getUserDetails = createAsyncThunk(
-//   "user/get",
-//   async (id, thunkAPI) => {
-//     const token = thunkAPI.getState().auth.user.token;
+export const getUserDetails = createAsyncThunk(
+    "user/get",
+    async (id, thunkAPI) => {
+        const token = thunkAPI.getState().auth.user.token;
 
-//     const data = await userService.getUserDetails(id, token);
+        const data = await userService.getUserDetails(id, token);
 
-//     console.log(data);
+        console.log(data);
 
-//     return data;
-//   }
-// );
+        return data;
+    }
+);
 
 //funções
 export const userSlice = createSlice({
@@ -90,17 +90,16 @@ export const userSlice = createSlice({
                 state.error = action.payload;
                 state.user = {};
             })
-        //           // .addCase(getUserDetails.pending, (state) => {
-        //           //   state.loading = true;
-        //           //   state.error = null;
-        //           // })
-        //           // .addCase(getUserDetails.fulfilled, (state, action) => {
-        //           //   state.loading = false;
-        //           //   state.success = true;
-        //           //   state.error = null;
-        //           //   state.user = action.payload;
-        //           // });
-        // },
+            .addCase(getUserDetails.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getUserDetails.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.error = null;
+                state.user = action.payload;
+            });
     }
 });
 
