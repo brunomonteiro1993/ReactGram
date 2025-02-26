@@ -16,6 +16,7 @@ import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import EditProfile from "./pages/EditProfile/EditProfile";
 import Profile from "./pages/Profile/Profile";
+import Photos from "./pages/Photo/Photos";
 
 function App() {
   const { auth, loading } = useAuth();
@@ -49,6 +50,10 @@ function App() {
             <Route
               path="/register"
               element={!auth ? <Register /> : <Navigate to="/" />}
+            />
+             <Route
+              path="/photos/:id"
+              element={auth ? <Photos /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>
