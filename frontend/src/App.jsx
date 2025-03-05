@@ -16,7 +16,7 @@ import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import EditProfile from "./pages/EditProfile/EditProfile";
 import Profile from "./pages/Profile/Profile";
-import Photos from "./pages/Photo/Photos";
+import Photo from "./pages/Photo/Photo";
 
 function App() {
   const { auth, loading } = useAuth();
@@ -53,7 +53,7 @@ function App() {
             />
              <Route
               path="/photos/:id"
-              element={auth ? <Photos /> : <Navigate to="/login" />}
+              element={auth ? <Photo /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>
