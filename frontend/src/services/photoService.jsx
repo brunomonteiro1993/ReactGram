@@ -75,12 +75,28 @@ const getPhoto = async (id, token) => {
   }
 };
 
+// like a photo
+const like = async (id, token) => {
+  const config = requestConfig("PUT", null, token);
+
+  try {
+    const res = await fetch(`${api}/photos/like/${id}`, config);
+    if (!res.ok) throw new Error("Erro ao tentar curtir a foto");
+    return await res.json();
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+    return { error: true, message: error.message }; // Retorna um objeto serializável
+  }
+};
+
+
 const photoService = {
   publishPhoto,
   getUserPhotos,
   deletePhoto,
   updatePhoto,
   getPhoto,
+  like,
 };
 
 export default photoService;
